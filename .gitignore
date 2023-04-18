@@ -1,0 +1,15 @@
+# Files
+.env
+.DS_Store
+nohup.out
+app.log
+
+# Folders
+.idea/
+__pycache__/
+.pytest_cache/
+.vscode/
+.venv/
+venv/
+.venv-dev/
+lib/

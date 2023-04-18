@@ -1,0 +1,5 @@
+SPACY_MODEL = 'en_core_web_md'
+DEFAULT_CHATGPT_MODEL_NAME = 'gpt-3.5-turbo'
+DEFAULT_GPT4_MODEL_NAME = 'gpt-4'
+DEFAULT_GPT_MODEL_NAME = 'text-davinci-003'
+DEFAULT_GPT_EMBEDDING_MODEL_NAME = 'text-embedding-ada-002'

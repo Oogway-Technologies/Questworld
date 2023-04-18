@@ -1,0 +1,12 @@
+openai
+langchain
+Flask
+python-dotenv
+tiktoken
+colorama
+faiss-cpu
+spacy
+termcolor
+
+# Download spacy model
+# python -m spacy download en_core_web_md
