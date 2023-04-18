@@ -21,7 +21,7 @@ Follow these steps:
 python -m spacy download en_core_web_md
 ```
 
-- create an .env file following the env_example file (user you OpenAI credentials)
+- create an .env file following the env_example file (use your OpenAI credentials)
 
 ## How do I run the app?
 
@@ -70,7 +70,7 @@ curl --location 'http://127.0.0.1:6000/' \
     "memories": [
         "Bruce witnessing his parents'\'' murder in Crime Alley, fueling his desire for justice",
         "Bruce met and trained with various mentors around the world, honing his skills in martial arts, detective work, and other disciplines",
-        "As a masked vigilante, he encounter different kind of bad people, in particular a sociopath person dresses like a clown"
+        "As a masked vigilante, he encounters different kind of bad people, in particular a sociopath person dresses like a clown"
     ]
 }'
 ```
