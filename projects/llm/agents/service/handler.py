@@ -1,34 +1,54 @@
 from server.base_handler import BaseHandler
 from projects.llm.agents.builder import build_agent
-from projects.llm.agents.utils import create_memory_retriever, create_agent_llm
+from projects.llm.agents.utils import create_memory_retriever, create_agent_llm, observe_agent
+from projects.llm.agents.conversation import run_conversation
 
 
 class Handler(BaseHandler):
     def __init__(self):
         super().__init__()
-        self.memory_retriever = None
-        self.agent = build_agent(
-            name="Bruce",
-            age=25,
-            traits="intelligent, idealist, realist",
-            status="fighting crime",
-            memory_retriever=create_memory_retriever(),
-            llm=create_agent_llm(),
-            daily_summaries=[
-                "Bruce started fighting crime as a masked vigilante one year ago. Today he is patroling the streets choosing his target to bring to justice."],
-            reflection_threshold=5
-        )
+        self.agents = []
 
     def serve_request(self, event, context):
-        memories = event["memories"]
+        agents = event["agents"]
+        run_convo = event.get("run_conversation", False)
+        initial_observation = event.get("initial_observation", "")
 
-        # Add memories
-        for memory in memories:
-            self.agent.add_memory(memory)
+        # Create the agents
+        for agent_data in agents:
+            agent = build_agent(
+                name=agent_data["name"],
+                age=agent_data["age"],
+                traits=', '.join(agent_data["traits"]),
+                status=agent_data["status"],
+                memory_retriever=create_memory_retriever(),
+                llm=create_agent_llm(),
+                daily_summaries=agent_data["daily_summaries"],
+                reflection_threshold=agent_data["reflection_threshold"]
+            )
+            self.agents.append(
+                {
+                    "name": agent_data["name"],
+                    "agent": agent,
+                    "observations": agent_data["observations"],
+                    "observation_threshold": agent_data["observation_threshold"]
+                }
+            )
 
-        # TODO: replace with the agent's code
-        summary = self.agent.get_summary(force_refresh=True)
-        response = {"summary": summary}
+        if run_convo:
+            # Run the conversation
+            agents_list = [agent["agent"] for agent in self.agents]
+            run_conversation(agents_list, initial_observation)
+        else:
+            # Run observations
+            for agent in self.agents:
+                agent_entity = agent["agent"]
+                observe_agent(
+                    agent_entity, agent["observations"], agent["observation_threshold"])
+
+        # TODO: return summary if asked from input
+        # summary = self.agent.get_summary(force_refresh=True)
+        response = {"summary": ""}
 
         return response
 

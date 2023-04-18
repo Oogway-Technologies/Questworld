@@ -12,7 +12,7 @@ def build_agent(
     memory_retriever: TimeWeightedVectorStoreRetriever,
     llm: ChatOpenAI,
     daily_summaries: List[str],
-    reflection_threshold: int = 8
+    reflection_threshold: float = 8
 ) -> GenerativeAgent:
     agent = GenerativeAgent(
         name=name,

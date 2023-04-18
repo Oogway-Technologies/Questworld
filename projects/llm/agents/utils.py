@@ -1,10 +1,13 @@
 import math
 import faiss
+from termcolor import colored
+from typing import List
 from langchain.chat_models import ChatOpenAI
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 from langchain.docstore import InMemoryDocstore
 from langchain.retrievers import TimeWeightedVectorStoreRetriever
+from projects.llm.agents.agent import GenerativeAgent
 
 
 def relevance_score_fn(score: float) -> float:
@@ -20,7 +23,7 @@ def relevance_score_fn(score: float) -> float:
 
 def create_agent_llm(max_tokens: int = 1500, model_name: str = "gpt-3.5-turbo"):
     # Can be any LLM
-    return ChatOpenAI(max_tokens=max_tokens, model_name = model_name)
+    return ChatOpenAI(max_tokens=max_tokens, model_name=model_name)
 
 
 def create_memory_retriever() -> TimeWeightedVectorStoreRetriever:
@@ -33,3 +36,15 @@ def create_memory_retriever() -> TimeWeightedVectorStoreRetriever:
     vectorstore = FAISS(embeddings_model.embed_query, index, InMemoryDocstore(
         {}), {}, relevance_score_fn=relevance_score_fn)
     return TimeWeightedVectorStoreRetriever(vectorstore=vectorstore, other_score_keys=["importance"], k=15)
+
+
+def observe_agent(agent: GenerativeAgent, observations: List[str], observation_threshold: int = 5) -> str:
+    """Help the notebook user interact with the agent."""
+    for i, observation in enumerate(observations):
+        _, reaction = agent.generate_reaction(observation)
+        print(colored(observation, "green"), reaction)
+        if ((i+1) % observation_threshold) == 0:
+            print('*'*40)
+            print(colored(
+                f"After {i+1} observations, Tommie's summary is:\n{agent.get_summary(force_refresh=True)}", "blue"))
+            print('*'*40)

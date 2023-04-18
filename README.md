@@ -66,31 +66,22 @@ and send the following request:
 ```BASH
 curl --location 'http://127.0.0.1:6000/' \
 --header 'Content-Type: application/json' \
---data '{
-    "memories": [
-        "Bruce witnessing his parents'\'' murder in Crime Alley, fueling his desire for justice",
-        "Bruce met and trained with various mentors around the world, honing his skills in martial arts, detective work, and other disciplines",
-        "As a masked vigilante, he encounters different kind of bad people, in particular a sociopath person dresses like a clown"
-    ]
-}'
+--data '<agents_content>'
 ```
 
-You should receive an output that is similar to the following:
+where agents_content is the JSON content you can find under
 
-```JSON
-{
-    "metadata": {
-        "metrics": {
-            "num_requests": {
-                "type": "COUNT",
-                "value": 1
-            },
-            "time_duration": {
-                "type": "RATE",
-                "value": 7.39660120010376
-            }
-        }
-    },
-    "summary": "Name: Bruce (age: 25)\nInnate traits: intelligent, idealist, realist\nBruce is a skilled and disciplined individual who has trained extensively in various areas, including martial arts and detective work. He is driven by a desire for justice, stemming from the traumatic experience of witnessing his parents' murder in Crime Alley. As a vigilante, he faces dangerous criminals, including a particularly disturbing sociopath who dresses like a clown."
-}
+```BASH
+projects/llm/agents/examples/agents.json
+```
+
+You should see the conversation on the screen similar to the following:
+
+```
+Arthur Arthur pauses briefly before continuing with the attempted robbery.
+Bruce said "Stop right there, Arthur. You're not getting away with this."
+Arthur said "Oh, Bruce. You always were such a stickler for the rules. But I'm afraid I have to go through with this. It's nothing personal, you understand. Just business."
+Bruce said "Arthur, there are no excuses for breaking the law. You know that. And I won't let you get away with it. Turn yourself in now, and I'll make sure the consequences aren't as severe as they could be."
+Arthur said "Oh Bruce, you always were such a goody two-shoes. But you know I can't turn myself in now. I have too much on the line. I appreciate your concern, but I have to do what I have to do."
+Bruce said "Arthur, I understand that you may feel like you have no other choice, but there is always another way. You don't have to resort to crime to get what you want. Think about the consequences and make the right decision. Turn yourself in now and let's work together to find a solution that doesn't involve breaking the law."
 ```
