@@ -7,6 +7,7 @@ from projects.llm.agents.agent import GenerativeAgent
 def build_agent(
     name: str,
     age: int,
+    character_class: str,
     traits: str,  # anxious, likes design, etc
     status: str,  # looking for a job, etc
     memory_retriever: TimeWeightedVectorStoreRetriever,
@@ -17,6 +18,7 @@ def build_agent(
     agent = GenerativeAgent(
         name=name,
         age=age,
+        character_class=character_class,
         traits=traits,
         status=status,
         memory_retriever=memory_retriever,

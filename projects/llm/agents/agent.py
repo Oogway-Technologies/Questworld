@@ -13,6 +13,7 @@ class GenerativeAgent(BaseModel):
     """A character with memory and innate characteristics."""
     name: str
     age: int
+    character_class: str
     traits: str
     """The traits of the character you wish not to change."""
     status: str
@@ -165,6 +166,7 @@ class GenerativeAgent(BaseModel):
             self.last_refreshed = current_time
         return (
             f"Name: {self.name} (age: {self.age})"
+            + f"\nCharacter class: {self.character_class}"
             + f"\nInnate traits: {self.traits}"
             + f"\n{self.summary}"
         )
@@ -290,7 +292,9 @@ class GenerativeAgent(BaseModel):
     def generate_dialogue_response(self, observation: str) -> Tuple[bool, str]:
         """React to a given observation."""
         call_to_action_template = (
-            'What would {agent_name} say? To end the conversation, write: GOODBYE: "what to say". Otherwise to continue the conversation, write: SAY: "what to say next"\n\n'
+            'What would {agent_name} say? '
+            + ' Use the character traits and character class when generating the response including the grammar and style that the particular character may have.\n'
+            + 'To end the conversation, write: GOODBYE: "what to say". Otherwise to continue the conversation, write: SAY: "what to say next"\n\n'
         )
         full_result = self._generate_reaction(
             observation, call_to_action_template)

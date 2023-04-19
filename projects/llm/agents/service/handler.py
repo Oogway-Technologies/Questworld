@@ -19,6 +19,7 @@ class Handler(BaseHandler):
             agent = build_agent(
                 name=agent_data["name"],
                 age=agent_data["age"],
+                character_class=agent_data["character_class"],
                 traits=', '.join(agent_data["traits"]),
                 status=agent_data["status"],
                 memory_retriever=create_memory_retriever(),
