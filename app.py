@@ -1,6 +1,7 @@
 import openai
 import argparse
 from server.flask_server import ModelServer
+from utils.config_utils import setup_keys
 from config import Config
 
 
@@ -19,13 +20,6 @@ parser.add_argument(
     choices=["demo", "agents"],
     help="Which service to start",
 )
-
-
-def setup_keys():
-    # Initialize OpenAI
-    if Config.OPENAI_ORGANIZATION is not None and Config.OPENAI_ORGANIZATION != "":
-        openai.organization = Config.OPENAI_ORGANIZATION
-    openai.api_key = Config.OPENAI_API_KEY
 
 
 def run_app():

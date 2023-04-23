@@ -23,6 +23,13 @@ def load_json(filepath):
     except Exception as e:
         return None
 
+def save_json(filepath, data):
+    try:
+        with open(filepath, 'w', encoding='utf-8') as outfile:
+            json.dump(data, outfile, indent=4)
+    except Exception as e:
+        return None
+
 
 def load_template(module_folder: str, filename: str, load_json: bool = True, templates_folder: str = 'templates'):
     path_to_data = Path(__file__).parent.parent / \

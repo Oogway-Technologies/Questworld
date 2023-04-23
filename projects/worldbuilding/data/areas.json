@@ -1,0 +1,16 @@
+{
+    "all_areas": {
+        "Phandalin Town Square": "Town square of the town of Phandalin.",
+        "Stonehill Inn": "In the center of town stands a large, newly built roadhouse of fieldstone and rough-hewn timbers. The common room is filled with locals nursing mugs of ale or cider, all of them eyeing you with curiosity.",
+        "Barthen's Provisions": "Barthen’s is the biggest trading post in Phandalin. Its shelves stock most ordinary goods and supplies, including backpacks, bedrolls, rope, and rations. The place is open from sunup to sundown.",
+        "Edermath Orchard": "A tidy little cottage beside an apple orchard.",
+        "Lionshield Coster": "Hanging above the front door of this modest trading post is a sign shaped like a wooden shield with a blue lion painted on it. This building is owned by the Lionshields, a merchant company based in the city of Yartar, over a hundred miles to the east. They ship finished goods to Phandalin and other small settlements throughout the region, but this outpost has been hard hit by banditry. The most recent Lionshield caravan due in Phandalin never arrived.",
+        "Phandalin Miner's Exchange": "The Miner’s Exchange is a trading post where local miners have their valuable finds weighed, measured, and paid out. In the absence of any local lord or authority, the exchange also serves as an unofficial records office, registering claims to various streams and excavations around the area. There isn’t any real gold rush in Phandalin, but enough wealth is hidden in the nearby streams and valleys to support a good number of independent prospectors. The exchange is a great place to meet people who spend a lot of time out and about in the countryside surrounding Phandalin. The guildmaster is an ambitious and calculating human woman named Halia Thornton.",
+        "Alderleaf Farm": "A farm owned by the helpful halfling farmer, Qelline Alderleaf.",
+        "Shrine of Luck": "Phandalin's only temple is a small shrine made of stones taken from the nearby ruins. It is dedicated to Tymora, goddess of luck and good fortune.",
+        "The Sleeping Giant": "This rundown tap house is a dirty, dangerous watering hole at the end of Phandalin’s main street. It is frequented by Redbrand thugs and operated by a surly female dwarf named Grista.",
+        "Townmaster’s Hall": "The townmaster’s hall has sturdy stone walls, a pitched wooden roof, and a bell tower at the back. Posted on a board next to the front door is a notice written in Common. It reads: “REWARD — Orcs near Wyvern Tor! Those of a mind to face the orc menace should inquire within.” The notice bears the town’s seal and an indecipherable signature.",
+        "Tresendar Manor": "A ruined manor. The Redbrands’ base in Phandalin is a dungeon complex under Tresendar Manor. Before the manor was ruined, its cellars served as safe storage for food and water in the event that the estate was attacked, while an adjoining crypt provided a resting place for the deceased members of the Tresendar family. The Redbrands have since expanded the cellars to suit their own purposes, adding slave pens, workshops, and barracks."
+    },
+    "main_area": "Phandalin Town Square"
+}
